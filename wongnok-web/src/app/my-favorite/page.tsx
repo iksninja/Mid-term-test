@@ -107,6 +107,8 @@ const MyFavorite =  () => {
 
     if (isRecipeError) return <h1>Error</h1>
 
+    const activeFavorite = recipesData.results.filter(recipe => !!recipe.favorite?.id)
+
     return (
         <div>
         <div className='flex justify-between items-center py-8'>
@@ -115,10 +117,19 @@ const MyFavorite =  () => {
             <Button className='bg-primary-500'>​+ สร้างสูตรอาหาร</Button>
             </Link>
         </div>
-        {recipesData && recipesData.results.length > 0 ? (
+        {recipesData && activeFavorite.length > 0 ? (
             <div className='flex flex-wrap gap-8'>
-            {recipesData.results.map((recipe, i) => (
-                <CardRecipe {...recipe} key={i} />
+            {recipesData.results.filter(recipe => !!recipe.favorite?.id).map((recipe, i) => (
+                <CardRecipe 
+                    {...recipe} key={i}
+                    onRefresh={() => {
+                        getRecipe({
+                            page: currentPage,
+                            limit: limitDataPerPage,
+                            search: searchInput,
+                          })
+                    }}
+                />
             ))}
             </div>
         ) : (

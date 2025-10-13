@@ -124,3 +124,17 @@ export const fetchRecipeFavorite = async (data: fetchRecipeRequest) => {
     throw e
   }
 }
+
+
+export const toggleFavorite = async (
+  recipeId: number,
+  isLiked: boolean
+): Promise<void> => {
+  if (isLiked) {
+    await api.delete(`/api/v1/food-recipes/${recipeId}/favorites`)
+  } else {
+    await api.post(`/api/v1/food-recipes/${recipeId}/favorites`)
+  }
+}
+
+

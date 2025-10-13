@@ -8,6 +8,7 @@ import LikeButton from "./LinkButton";
 
 
 const CardRecipe = ({
+  id,
   name,
   imageUrl,
   description,
@@ -16,7 +17,8 @@ const CardRecipe = ({
   user,
   favorite,
   onClick,
-}: CardRecipeProps) => (
+  onRefresh,
+}: CardRecipeProps & { onRefresh?: () => void }) => (
   <Card className='w-[276px] h-[390px]'>
     <div>
       <div className='h-[158px] relative rounded-t-lg pb-4' onClick={onClick}>
@@ -26,7 +28,11 @@ const CardRecipe = ({
         <CardContent>
           <div className="flex justify-between">
             <h1 className='font-bold'>{name}</h1>
-            <LikeButton/>
+            <LikeButton
+              foodRecipeID = {Number(id)}
+              isFavorited={!!favorite?.id}
+              onRefresh={onRefresh}
+              />
           </div>
           <p className='text-secondary line-clamp-3'>{description}</p>
         </CardContent>
