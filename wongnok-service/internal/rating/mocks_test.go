@@ -286,6 +286,66 @@ func (_m *MockIUserService) EXPECT() *MockIUserService_Expecter {
 	return &MockIUserService_Expecter{mock: &_m.Mock}
 }
 
+// Create provides a mock function for the type MockIUserService
+func (_mock *MockIUserService) Create(claims model.Claims) (model.User, error) {
+	ret := _mock.Called(claims)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Create")
+	}
+
+	var r0 model.User
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(model.Claims) (model.User, error)); ok {
+		return returnFunc(claims)
+	}
+	if returnFunc, ok := ret.Get(0).(func(model.Claims) model.User); ok {
+		r0 = returnFunc(claims)
+	} else {
+		r0 = ret.Get(0).(model.User)
+	}
+	if returnFunc, ok := ret.Get(1).(func(model.Claims) error); ok {
+		r1 = returnFunc(claims)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockIUserService_Create_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Create'
+type MockIUserService_Create_Call struct {
+	*mock.Call
+}
+
+// Create is a helper method to define mock.On call
+//   - claims model.Claims
+func (_e *MockIUserService_Expecter) Create(claims interface{}) *MockIUserService_Create_Call {
+	return &MockIUserService_Create_Call{Call: _e.mock.On("Create", claims)}
+}
+
+func (_c *MockIUserService_Create_Call) Run(run func(claims model.Claims)) *MockIUserService_Create_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 model.Claims
+		if args[0] != nil {
+			arg0 = args[0].(model.Claims)
+		}
+		run(
+			arg0,
+		)
+	})
+	return _c
+}
+
+func (_c *MockIUserService_Create_Call) Return(user model.User, err error) *MockIUserService_Create_Call {
+	_c.Call.Return(user, err)
+	return _c
+}
+
+func (_c *MockIUserService_Create_Call) RunAndReturn(run func(claims model.Claims) (model.User, error)) *MockIUserService_Create_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetByID provides a mock function for the type MockIUserService
 func (_mock *MockIUserService) GetByID(claims model.Claims) (model.User, error) {
 	ret := _mock.Called(claims)
@@ -410,6 +470,66 @@ func (_c *MockIUserService_GetRecipes_Call) Return(foodRecipes model.FoodRecipes
 }
 
 func (_c *MockIUserService_GetRecipes_Call) RunAndReturn(run func(userID string, claims model.Claims) (model.FoodRecipes, error)) *MockIUserService_GetRecipes_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// Update provides a mock function for the type MockIUserService
+func (_mock *MockIUserService) Update(user *model.User) (model.User, error) {
+	ret := _mock.Called(user)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Update")
+	}
+
+	var r0 model.User
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(*model.User) (model.User, error)); ok {
+		return returnFunc(user)
+	}
+	if returnFunc, ok := ret.Get(0).(func(*model.User) model.User); ok {
+		r0 = returnFunc(user)
+	} else {
+		r0 = ret.Get(0).(model.User)
+	}
+	if returnFunc, ok := ret.Get(1).(func(*model.User) error); ok {
+		r1 = returnFunc(user)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MockIUserService_Update_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Update'
+type MockIUserService_Update_Call struct {
+	*mock.Call
+}
+
+// Update is a helper method to define mock.On call
+//   - user *model.User
+func (_e *MockIUserService_Expecter) Update(user interface{}) *MockIUserService_Update_Call {
+	return &MockIUserService_Update_Call{Call: _e.mock.On("Update", user)}
+}
+
+func (_c *MockIUserService_Update_Call) Run(run func(user *model.User)) *MockIUserService_Update_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 *model.User
+		if args[0] != nil {
+			arg0 = args[0].(*model.User)
+		}
+		run(
+			arg0,
+		)
+	})
+	return _c
+}
+
+func (_c *MockIUserService_Update_Call) Return(user1 model.User, err error) *MockIUserService_Update_Call {
+	_c.Call.Return(user1, err)
+	return _c
+}
+
+func (_c *MockIUserService_Update_Call) RunAndReturn(run func(user *model.User) (model.User, error)) *MockIUserService_Update_Call {
 	_c.Call.Return(run)
 	return _c
 }
