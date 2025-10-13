@@ -41,7 +41,7 @@ const Navbar = () => {
                       <Link href="/my-recipe" className='hover:bg-primary-100'>สูตรอาหารของฉัน</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
-                      <Link href="/favorite" className='hover:bg-primary-100'>สูตรอาหารสุดโปรด</Link>
+                      <Link href="/my-favorite" className='hover:bg-primary-100'>สูตรอาหารสุดโปรด</Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
                       <div onClick={() => signOut()} className='hover:bg-primary-100'>ออกจากระบบ</div>

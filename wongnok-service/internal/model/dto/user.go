@@ -11,6 +11,6 @@ type UserResponse struct {
 
 type UserRequest struct {
 	NickName *string `validate:"required"`
-	ImageUrl *string `validate:"required"`
+	ImageUrl *string `validate:"omitempty,url"`
 	//ImageUrl *string `validate:"omitempty,url"`
 }

@@ -115,11 +115,12 @@ export const fetchRecipeFavorite = async (data: fetchRecipeRequest) => {
       results: Recipe[]
       total: number
     }>(
-       `/api/v1/food-recipes/favorites?page=${data.page}&limit=${data.limit}&search=${data.search}`
+       `/api/v1/food-recipes/favorites?page=${data.page}&limit=${data.limit}&search=${data.search ?? ''}`
     )
 
     return recipesFavorite.data
   } catch (e) {
     console.error(e)
+    throw e
   }
 }
